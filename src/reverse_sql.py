@@ -138,7 +138,7 @@ def parsing_binlog(mysql_host=None, mysql_port=None, mysql_user=None, mysql_pass
             elif found_target and binlogevent.gtid == f"{gtid_server_uuid}:{gtid_number_next}":
                 break
 
-        if found_target and isinstance(binlogevent, (WriteRowsEvent, UpdateRowsEvent, DeleteRowsEvent)):
+        if isinstance(binlogevent, (WriteRowsEvent, UpdateRowsEvent, DeleteRowsEvent)):
             result = process_binlogevent(binlogevent)
             sql_r.extend(result)
  
